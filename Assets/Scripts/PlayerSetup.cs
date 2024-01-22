@@ -23,6 +23,8 @@ public class PlayerSetup : NetworkBehaviour
             if (sceneCamera != null)
                 sceneCamera.gameObject.SetActive(false);
         }
+        
+        GetComponent<Player>().Setup();
     }
     // pour pas que tout le monde joue le script de chacun
     private void DisableCompenents()
