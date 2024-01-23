@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private const string playerIdPrefix = "Player";
     private static Dictionary<string, Player> players = new Dictionary<string, Player>();
 
+    private static Dictionary<string, Enemy> enemies = new Dictionary<string, Enemy>();
     public MatchSettings matchSettings;
 
     public static GameManager instance;
@@ -29,17 +30,33 @@ public class GameManager : MonoBehaviour
         players.Add(playerId, player);
         player.transform.name = playerId;
     }
-
     //desinregistre un joueur du dictionnaire
     public static void UnRegisterPlayer(string playerId)
     {
         players.Remove(playerId);
     }
-
     public static Player getPlayer(string playerid)
     {
         return players[playerid];
     }
+
+
+    public static void RegisterEnemny(string netId, Enemy enemy)
+    {
+        string enemyId = enemy.data.enemyType + netId;
+        enemies.Add(enemyId,enemy);
+        enemy.transform.name = enemyId;
+    }
+    public static void UnRegisterEnemny(string enemyId)
+    {
+        enemies.Remove(enemyId);
+    }
+
+    public static Enemy getEnemy(string enemyId)
+    {
+        return enemies[enemyId];
+    }
+
 
     private void OnGUI()
     {
@@ -48,6 +65,10 @@ public class GameManager : MonoBehaviour
         foreach (string playerId in players.Keys)
         {
             GUILayout.Label(playerId + " - " + players[playerId].transform.name);
+        }
+        foreach (string enemyId in enemies.Keys)
+        {
+            GUILayout.Label(enemyId + " - " + enemies[enemyId].transform.name);
         }
         GUILayout.EndVertical();
         GUILayout.EndArea();

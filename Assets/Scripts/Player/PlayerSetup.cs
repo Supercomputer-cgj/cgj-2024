@@ -1,5 +1,6 @@
 using Mirror;
 using UnityEngine;
+using Vector3 = System.Numerics.Vector3;
 
 public class PlayerSetup : NetworkBehaviour
 {
@@ -37,10 +38,8 @@ public class PlayerSetup : NetworkBehaviour
             //UiLocal player
             playerUiIntsance = Instantiate(playerUiPrefab);
             playerUiInvInstance = Instantiate(playerUiInvPrefab);
-
-            Cursor.lockState = CursorLockMode.Locked;
         }
-        
+
         GetComponent<Player>().Setup();
     }
     // pour pas que tout le monde joue le script de chacun
