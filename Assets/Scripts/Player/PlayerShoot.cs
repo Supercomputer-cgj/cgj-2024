@@ -8,7 +8,6 @@ public class PlayerShoot : NetworkBehaviour
     public PlayerWeapon weapon;
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask mask;
-    private bool hasShot = false;
     private Vector3 direction;
     private Vector3 depart;
     private void Start()
@@ -44,6 +43,11 @@ public class PlayerShoot : NetworkBehaviour
                 direction = cam.transform.forward * weapon.range;
                 CmdPlayerShot(hit.collider.name);
             }
+
+            if (hit.collider.tag == "Enemy")
+            {
+                CmdEnemyShot(hit.collider.name);
+            }
         }
     }
 
@@ -61,5 +65,13 @@ public class PlayerShoot : NetworkBehaviour
         //gestion des dégats
         Player player = GameManager.getPlayer(playerId);
         player.RpcTakeDamage(weapon.damage);
+    }
+
+    [Command]
+    private void CmdEnemyShot(string enemyId)
+    {
+        Debug.Log(enemyId + " a été touché ");
+        Enemy enemy = GameManager.getEnemy(enemyId);
+        enemy.RpcTakeDamage(enemy.data.damage);
     }
 }
