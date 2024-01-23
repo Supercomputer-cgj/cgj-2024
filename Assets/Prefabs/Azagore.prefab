@@ -346,8 +346,8 @@ Transform:
   m_GameObject: {fileID: 1917302532606872488}
   serializedVersion: 2
   m_LocalRotation: {x: 0.014752731, y: 0.0000000036672896, z: -0.00000019996709, w: 0.9998912}
-  m_LocalPosition: {x: 0, y: 1.5017477, z: -0.014246702}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4124430364472124071}
@@ -542,7 +542,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 514528600009429679}
@@ -1422,7 +1422,7 @@ GameObject:
   - component: {fileID: -1951898031440373466}
   - component: {fileID: 7084294299704834085}
   - component: {fileID: 9033298619319014950}
-  - component: {fileID: 4999149600067094793}
+  - component: {fileID: 6533821746493954479}
   m_Layer: 6
   m_Name: Azagore
   m_TagString: Player
@@ -1584,7 +1584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientStarted: 0
   sceneId: 0
-  _assetId: 1928538145
+  _assetId: 1535770294
   serverOnly: 0
   visible: 2
   hasSpawned: 0
@@ -1656,7 +1656,7 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
---- !u!64 &4999149600067094793
+--- !u!64 &6533821746493954479
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2041,7 +2041,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7598454437519947284}
