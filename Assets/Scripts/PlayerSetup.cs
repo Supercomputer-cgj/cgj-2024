@@ -1,3 +1,4 @@
+using System;
 using Mirror;
 using UnityEngine;
 
@@ -11,6 +12,11 @@ public class PlayerSetup : NetworkBehaviour
 
     [SerializeField] private GameObject playerUiInvPrefab;
     private GameObject playerUiInvInstance;
+
+    public GameObject getPlayerUiInvInstance()
+    {
+        return playerUiIntsance;
+    }
 
     private Camera sceneCamera;
 
@@ -32,6 +38,7 @@ public class PlayerSetup : NetworkBehaviour
             //UiLocal player
             playerUiIntsance = Instantiate(playerUiPrefab);
             playerUiInvInstance = Instantiate(playerUiInvPrefab);
+            
         }
         
         GetComponent<Player>().Setup();
