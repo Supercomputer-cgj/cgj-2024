@@ -12,12 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 15f;
 
     private PlayerMotor motor;
-    private ConfigurableJoint joint;
 
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
-        joint = GetComponent<ConfigurableJoint>();
     }
 
     private void Update()
@@ -49,6 +47,8 @@ public class PlayerController : MonoBehaviour
         {
             Jump(jumpForce);
         }
+        
+
 
 
     }
