@@ -502,6 +502,8 @@ MonoBehaviour:
   remoteLayerName: RemotePlayer
   playerUiPrefab: {fileID: 6048496347651382708, guid: 8609afe34e231624fb7606e8cde2f327,
     type: 3}
+  playerUiInvPrefab: {fileID: 9028054210031494678, guid: 690247e3677301d4b8c0448325db62d8,
+    type: 3}
 --- !u!114 &7376597966257463908
 MonoBehaviour:
   m_ObjectHideFlags: 0

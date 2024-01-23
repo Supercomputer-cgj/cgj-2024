@@ -12,12 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 15f;
 
     private PlayerMotor motor;
-    private ConfigurableJoint joint;
 
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
-        joint = GetComponent<ConfigurableJoint>();
     }
 
     private void Update()
@@ -38,7 +36,6 @@ public class PlayerController : MonoBehaviour
         Vector3 rotation = new Vector3(0, yRot, 0) * mouseSensitivityX;
         motor.Rotate(rotation);
 
-
         //Gestion Rotation camera AXE Y
         float xRot = Input.GetAxisRaw("Mouse Y");
         float cameraRotationX = xRot * mouseSensitivityY;
@@ -46,11 +43,11 @@ public class PlayerController : MonoBehaviour
 
 
         //Gestion du jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, Vector3.down, 0.8f))
         {
             Jump(jumpForce);
         }
-
+        
 
     }
 
