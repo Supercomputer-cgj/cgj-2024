@@ -47,7 +47,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../Nouveau dossier/SuperComputer.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../build/SuperComputer.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\User\OneDrive\Bureau\Nouveau dossier" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -100,7 +100,7 @@
       <option name="presentableId" value="Default" />
       <updated>1706000548629</updated>
       <workItem from="1706000548632" duration="570000" />
-      <workItem from="1706001159577" duration="414000" />
+      <workItem from="1706001159577" duration="10558000" />
     </task>
     <servers />
   </component>

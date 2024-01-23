@@ -1511,6 +1511,7 @@ GameObject:
   - component: {fileID: 1200003519247252299}
   - component: {fileID: 1129143250276390216}
   - component: {fileID: 6948725453346131765}
+  - component: {fileID: 3935004715283270854}
   m_Layer: 6
   m_Name: "Cl\xE9a"
   m_TagString: Player
@@ -1766,6 +1767,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3106403576111199412, guid: 08eec0f6e33866c45aa16d0c946406a5, type: 3}
+--- !u!95 &3935004715283270854
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845666298112745752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 08eec0f6e33866c45aa16d0c946406a5, type: 3}
+  m_Controller: {fileID: 9100000, guid: 988df6529609d6c438933e1527587a5c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3971888377302607251
 GameObject:
   m_ObjectHideFlags: 0

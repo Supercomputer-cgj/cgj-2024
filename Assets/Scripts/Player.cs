@@ -82,6 +82,9 @@ public class Player : NetworkBehaviour
     private void Die()
     {
         isDead = true;
+        this.GetComponent<Animator>().Play("mort"); 
+        transform.position = new Vector3(transform.position.x, transform.position.y-1, transform.position.z);
+        
         // désactive les Behaviour (mouvement)
         for (int i = 0; i < disableOnDeath.Length; i++)
             disableOnDeath[i].enabled = false;
@@ -94,6 +97,7 @@ public class Player : NetworkBehaviour
         }
         
         Debug.Log(transform.name +  " est mort");
+        
         //Respawn avec délai
         StartCoroutine(Respawn());
     }
