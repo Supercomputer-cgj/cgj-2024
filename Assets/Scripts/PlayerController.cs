@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         motor.RotateCamera(cameraRotationX);
 
 
-        //Gestion du thruster
+        //Gestion du jump
         if (Input.GetButtonDown("Jump"))
         {
             Jump(jumpForce);
