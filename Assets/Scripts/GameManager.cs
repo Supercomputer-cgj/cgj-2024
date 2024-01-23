@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //UCZUB
     private const string playerIdPrefix = "Player";
     private static Dictionary<string, Player> players = new Dictionary<string, Player>();
 
@@ -11,6 +12,19 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    [SerializeField] private GameObject door1;
+
+    public void OpenOuPasx(GameObject door, int nbPlayerAc)
+    {
+        if (nbPlayerAc >= nbplayer())
+        {
+            gameObject.SetActive(false);
+        }
+    }
+    public static int nbplayer()
+    {
+        return players.Count;
+    }
     private void Awake()
     {
         if (instance == null)
@@ -18,7 +32,6 @@ public class GameManager : MonoBehaviour
             instance = this;
             return;
         }
-        
         Debug.LogError("Plus d'une instance de game Manager dans la scène");
     }
 
