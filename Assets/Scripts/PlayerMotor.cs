@@ -9,9 +9,9 @@ public class PlayerMotor : MonoBehaviour
     
     private Vector3 velocity;
     private Vector3 rotation;
-    private float jumpForce;
     private float cameraRotationX = 0f;
     private float currentCameraRotationX = 0f;
+    private Vector3 thrusterVelocity;
     [SerializeField] private float cameraRotationLimit = 85f;
     
     private Rigidbody rb;
@@ -34,11 +34,12 @@ public class PlayerMotor : MonoBehaviour
     {
         cameraRotationX = _cameraRotationX;
     }
-    public void Jump(float _jumpForce)
+
+    public void ApplyThruster(Vector3 _thrusterVelocity)
     {
-        jumpForce = _jumpForce;
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        thrusterVelocity = _thrusterVelocity;
     }
+    
     
 
     // CALCUL
@@ -55,7 +56,11 @@ public class PlayerMotor : MonoBehaviour
         {
             rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
         }
-        
+
+        if (thrusterVelocity != Vector3.zero)
+        {
+            rb.AddForce(thrusterVelocity * Time.fixedDeltaTime,ForceMode.Acceleration);
+        }
     }
     
     //gestion rotation

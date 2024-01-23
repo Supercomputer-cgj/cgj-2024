@@ -2,20 +2,28 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMotor))]
+[RequireComponent(typeof(ConfigurableJoint))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 3f;
 
     [SerializeField] private float mouseSensitivityX = 10f;
     [SerializeField] private float mouseSensitivityY = 10f;
+    [SerializeField] private float thrusterForce = 1000f;
 
-    [SerializeField] private float jumpForce = 15f;
+    [Header("Joint Options")] [SerializeField]
+    private float jointSpring = 15;
+
+    [SerializeField] private float jointMaxForce = 30;
 
     private PlayerMotor motor;
+    private ConfigurableJoint joint;
 
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
+        joint = GetComponent<ConfigurableJoint>();
+        setJoinSettings(jointSpring);
     }
 
     private void Update()
@@ -36,23 +44,30 @@ public class PlayerController : MonoBehaviour
         Vector3 rotation = new Vector3(0, yRot, 0) * mouseSensitivityX;
         motor.Rotate(rotation);
 
+
         //Gestion Rotation camera AXE Y
         float xRot = Input.GetAxisRaw("Mouse Y");
         float cameraRotationX = xRot * mouseSensitivityY;
         motor.RotateCamera(cameraRotationX);
 
 
-        //Gestion du jump
-        if (Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, Vector3.down, 0.8f))
+        //Gestion du thruster
+        Vector3 thrusterVelocity = Vector3.zero;
+        if (Input.GetButton("Jump"))
         {
-            Jump(jumpForce);
+            thrusterVelocity = Vector3.up * thrusterForce;
+            setJoinSettings(0f);
         }
+        else
+        {
+            setJoinSettings(jointSpring);
+        }
+        motor.ApplyThruster(thrusterVelocity);
         
-
     }
 
-    private void Jump(float _jumpForce)
+    private void setJoinSettings(float _jointSpring)
     {
-        motor.Jump(_jumpForce);
+        joint.yDrive = new JointDrive {maximumForce = jointMaxForce, positionSpring = _jointSpring};
     }
 }
