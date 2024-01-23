@@ -7,6 +7,7 @@ using Mirror;
 public class Player : NetworkBehaviour
 {
     [SyncVar] private bool _isDead = false;
+
     //propriété setteur et getteur
     public bool isDead
     {
