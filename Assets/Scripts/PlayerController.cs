@@ -74,10 +74,9 @@ public class PlayerController : MonoBehaviour
         else animator.Play(Idle);
         
         
-        
+        //  Physics.Raycast(transform.position, Vector3.down, 0.8f)
         //Gestion du jump
-        if (Input.GetButtonDown("Jump") &&
-            Physics.Raycast(transform.position, Vector3.down, 0.8f)) //Gestion du jump
+        if (Input.GetButtonDown("Jump")) //Gestion du jump
         {
             /*if (velocity.magnitude > 0.2f) animator.Play(runningJump);                                                //fonctionne pas fuck, a re faire a la fin
             else animator.Play(idleJump);*/
