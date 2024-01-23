@@ -120,6 +120,10 @@ public class Player : NetworkBehaviour
         {
             activInv = !activInv;
             playerUiInvInstance.SetActive(activInv);
+            if (activInv)
+            {
+                Cursor.visible = true;
+            }
         }
     }
 }

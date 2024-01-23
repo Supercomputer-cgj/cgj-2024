@@ -43,13 +43,11 @@ public class PlayerController : MonoBehaviour
 
 
         //Gestion du jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, Vector3.down, 0.8f))
         {
             Jump(jumpForce);
         }
         
-
-
 
     }
 
