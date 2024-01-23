@@ -9,7 +9,7 @@ public class PlayerMotor : MonoBehaviour
     
     private Vector3 velocity;
     private Vector3 rotation;
-    private Vector3 jumpForce;
+    private float jumpForce;
     private float cameraRotationX = 0f;
     private float currentCameraRotationX = 0f;
     [SerializeField] private float cameraRotationLimit = 85f;
@@ -34,9 +34,10 @@ public class PlayerMotor : MonoBehaviour
     {
         cameraRotationX = _cameraRotationX;
     }
-    public void Jump(Vector3 _jumpForce)
+    public void Jump(float _jumpForce)
     {
         jumpForce = _jumpForce;
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
     
 
@@ -54,7 +55,6 @@ public class PlayerMotor : MonoBehaviour
         {
             rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
         }
-        rb.AddForce(Vector3.up + jumpForce * Time.fixedDeltaTime);
         
     }
     

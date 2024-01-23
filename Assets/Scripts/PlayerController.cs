@@ -13,26 +13,25 @@ public class PlayerController : MonoBehaviour
 
     private PlayerMotor motor;
     private ConfigurableJoint joint;
-    
-    
-    
-    
+
+
     /*Animation*/
     private Animator animator;
     private bool isDead = false;
-    
+
     private string Idle = "idle";
     private string Walk = "walk";
     private string Run = "running";
     private string idleJump = "idle Jump";
     private string runningJump = "running Jump";
-    
+
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
         joint = GetComponent<ConfigurableJoint>();
         animator = GetComponent<Animator>();
     }
+
 
     private void Update()
     {
@@ -52,44 +51,43 @@ public class PlayerController : MonoBehaviour
         float xRot = Input.GetAxisRaw("Mouse Y");
         float cameraRotationX = xRot * mouseSensitivityY;
         motor.RotateCamera(cameraRotationX);
-        
-        
+
+
         Vector3 velocity = (moveHorizontal + moveVertical).normalized * speed;
         motor.Move(velocity);
 
 
         if (velocity.magnitude > 0.2f) //si moouvement
-        {
-            
-            //tant que Lshift appuyé alors speed = 6f
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                animator.Play(Run);
-                speed = 12; //on accelere a balle
-            }
-            else
-            {
-                animator.Play(Walk);
-                speed = 6f;
-            }
-        
+
             //Gestion du jump
-            if (Input.GetButtonDown("Jump")) 
+            if (Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, Vector3.down, 0.8f))
             {
-                /*if(velocity.magnitude > 0.1f)  animator.Play(runningJump);
-                else animator.Play(idleJump);*/
-                Jump(jumpForce);
+                //tant que Lshift appuyé alors speed = 6f
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    animator.Play(Run);
+                    speed = 12; //on accelere a balle
+                }
+                else
+                {
+                    animator.Play(Walk);
+                    speed = 6f;
+                }
+
+                //Gestion du jump
+                if (Input.GetButtonDown("Jump"))
+                {
+                    /*if(velocity.magnitude > 0.1f)  animator.Play(runningJump);
+                    else animator.Play(idleJump);*/
+                    Jump(jumpForce);
+                }
             }
-        }
-        else animator.Play(Idle);
 
-
+            else animator.Play(Idle);
     }
 
     private void Jump(float _jumpForce)
     {
-        Vector3 jumpForce = new Vector3(0, _jumpForce, 0);
-        motor.Jump(jumpForce);
+        motor.Jump(_jumpForce);
     }
-    
 }

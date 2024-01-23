@@ -8,6 +8,9 @@ public class PlayerShoot : NetworkBehaviour
     public PlayerWeapon weapon;
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask mask;
+    private bool hasShot = false;
+    private Vector3 direction;
+    private Vector3 depart;
     private void Start()
     {
         if (cam == null)
@@ -32,18 +35,23 @@ public class PlayerShoot : NetworkBehaviour
     {
         //récupere le raycast et envoie au serveur son name 
         RaycastHit hit;
-        
         if (Physics.Raycast(cam.transform.position, cam.transform.forward,out hit,weapon.range,mask))
         {
             //gere uniquement le tag player
             if (hit.collider.tag == "Player")
             {
-                Debug.DrawLine(cam.transform.position, cam.transform.forward * weapon.range, Color.red);
+                depart = cam.transform.position;
+                direction = cam.transform.forward * weapon.range;
                 CmdPlayerShot(hit.collider.name);
             }
         }
     }
-    
+
+    private void OnDrawGizmos()
+    {
+            Debug.DrawLine(depart, direction, Color.red);
+    }
+
     //gestion de this envoie au serveur
     [Command]
     private void CmdPlayerShot(string playerId)

@@ -9,6 +9,14 @@ public class PlayerSetup : NetworkBehaviour
     [SerializeField] private GameObject playerUiPrefab;
     private GameObject playerUiIntsance;
 
+    [SerializeField] private GameObject playerUiInvPrefab;
+    private GameObject playerUiInvInstance;
+
+    public GameObject getPlayerUiInvInstance()
+    {
+        return playerUiInvInstance;
+    }
+
     private Camera sceneCamera;
 
     private void Start()
@@ -28,6 +36,9 @@ public class PlayerSetup : NetworkBehaviour
             
             //UiLocal player
             playerUiIntsance = Instantiate(playerUiPrefab);
+            playerUiInvInstance = Instantiate(playerUiInvPrefab);
+
+            Cursor.lockState = CursorLockMode.Locked;
         }
         
         GetComponent<Player>().Setup();
@@ -62,5 +73,6 @@ public class PlayerSetup : NetworkBehaviour
 
         //supprime l'ui
         Destroy(playerUiIntsance);
+        Destroy(playerUiInvInstance);
     }
 }

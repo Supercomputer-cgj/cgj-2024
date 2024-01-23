@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Mirror;
 
+[RequireComponent(typeof(PlayerSetup))]
 public class Player : NetworkBehaviour
 {
     [SyncVar] private bool _isDead = false;
@@ -22,9 +23,14 @@ public class Player : NetworkBehaviour
     [SerializeField] private Behaviour[] disableOnDeath;
     private bool[] wasEnabledOnStart;
 
+    private GameObject playerUiInvInstance;
+    private bool activInv = false;
+
 
     public void Setup()
     {
+        PlayerSetup playersetup = GetComponent<PlayerSetup>();
+        playerUiInvInstance = playersetup.getPlayerUiInvInstance();
         //Init wasEnable pour SetDefaults()
         wasEnabledOnStart = new bool[disableOnDeath.Length];
         for (int i = 0; i < disableOnDeath.Length; i++)
@@ -113,6 +119,16 @@ public class Player : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             RpcTakeDamage(40f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            activInv = !activInv;
+            playerUiInvInstance.SetActive(activInv);
+            if (activInv)
+            {
+                Cursor.visible = true;
+            }
         }
     }
 }
