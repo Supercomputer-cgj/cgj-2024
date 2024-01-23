@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     private string Idle = "idle";
     private string Walk = "walk";
     private string Run = "running";
-    private string idleJump = "idle Jump";
-    private string runningJump = "running Jump";
+    private string idleJump = "idleJump";
+    private string runningJump = "runningJump";
 
     private void Start()
     {
@@ -55,35 +55,34 @@ public class PlayerController : MonoBehaviour
 
         Vector3 velocity = (moveHorizontal + moveVertical).normalized * speed;
         motor.Move(velocity);
-
-
-        if (velocity.magnitude > 0.2f) //si moouvement
-
-            //Gestion du jump
-            if (Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, Vector3.down, 0.8f))
+        
+        if (velocity.magnitude > 0.2f)
+        {
+            //si moouvement
+            //tant que Lshift appuyé alors speed = 6f
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                //tant que Lshift appuyé alors speed = 6f
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    animator.Play(Run);
-                    speed = 12; //on accelere a balle
-                }
-                else
-                {
-                    animator.Play(Walk);
-                    speed = 6f;
-                }
-
-                //Gestion du jump
-                if (Input.GetButtonDown("Jump"))
-                {
-                    /*if(velocity.magnitude > 0.1f)  animator.Play(runningJump);
-                    else animator.Play(idleJump);*/
-                    Jump(jumpForce);
-                }
+                animator.Play(Run);
+                speed = 12f; //on accelere a balle
             }
-
-            else animator.Play(Idle);
+            else
+            {
+                animator.Play(Walk);
+                speed = 6f;
+            }
+        }
+        else animator.Play(Idle);
+        
+        
+        
+        //Gestion du jump
+        if (Input.GetButtonDown("Jump") &&
+            Physics.Raycast(transform.position, Vector3.down, 0.8f)) //Gestion du jump
+        {
+            /*if (velocity.magnitude > 0.2f) animator.Play(runningJump);                                                //fonctionne pas fuck, a re faire a la fin
+            else animator.Play(idleJump);*/
+            Jump(jumpForce);
+        }
     }
 
     private void Jump(float _jumpForce)

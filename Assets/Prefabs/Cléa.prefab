@@ -1510,8 +1510,8 @@ GameObject:
   - component: {fileID: 1593794754753993288}
   - component: {fileID: 1200003519247252299}
   - component: {fileID: 1129143250276390216}
-  - component: {fileID: 6948725453346131765}
   - component: {fileID: 3935004715283270854}
+  - component: {fileID: 1588526881799172371}
   m_Layer: 6
   m_Name: "Cl\xE9a"
   m_TagString: Player
@@ -1545,7 +1545,7 @@ Rigidbody:
   m_GameObject: {fileID: 3845666298112745752}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 6
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1559,7 +1559,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -1611,7 +1611,7 @@ MonoBehaviour:
   speed: 3
   mouseSensitivityX: 6
   mouseSensitivityY: 6
-  jumpForce: 30
+  jumpForce: 5
 --- !u!114 &873955367218641421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1635,6 +1635,8 @@ MonoBehaviour:
   - {fileID: 5776470270761630711}
   remoteLayerName: RemotePlayer
   playerUiPrefab: {fileID: 5152941909035078397, guid: 22f1fa3a0aff72b46a371f667bb4fb30,
+    type: 3}
+  playerUiInvPrefab: {fileID: 9028054210031494678, guid: 690247e3677301d4b8c0448325db62d8,
     type: 3}
 --- !u!114 &1488945667252248842
 MonoBehaviour:
@@ -1745,28 +1747,6 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
---- !u!64 &6948725453346131765
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3845666298112745752}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3106403576111199412, guid: 08eec0f6e33866c45aa16d0c946406a5, type: 3}
 --- !u!95 &3935004715283270854
 Animator:
   serializedVersion: 5
@@ -1788,6 +1768,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &1588526881799172371
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845666298112745752}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1 &3971888377302607251
 GameObject:
   m_ObjectHideFlags: 0

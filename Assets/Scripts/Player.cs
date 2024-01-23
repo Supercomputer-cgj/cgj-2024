@@ -69,6 +69,7 @@ public class Player : NetworkBehaviour
         Transform spawnPoint = NetworkManager.singleton.GetStartPosition();
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
+        this.GetComponent<Rigidbody>().isKinematic = false; //désactive la gravité
     }
 
     // Le serveur vers les clients
@@ -88,8 +89,9 @@ public class Player : NetworkBehaviour
     private void Die()
     {
         isDead = true;
-        this.GetComponent<Animator>().Play("mort"); 
-        transform.position = new Vector3(transform.position.x, transform.position.y-1, transform.position.z);
+        this.GetComponent<Animator>().Play("mort"); //Animation mort
+        transform.position = new Vector3(transform.position.x, transform.position.y-1, transform.position.z); //pour évité de passé a travers le sol
+        this.GetComponent<Rigidbody>().isKinematic = true; //désactive la gravité
         
         // désactive les Behaviour (mouvement)
         for (int i = 0; i < disableOnDeath.Length; i++)
