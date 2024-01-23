@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(float _jumpForce)
     {
-        Vector3 jumpForce = new Vector3(0, _jumpForce, 0);
-        motor.Jump(jumpForce);
+        motor.Jump(_jumpForce);
     }
 }

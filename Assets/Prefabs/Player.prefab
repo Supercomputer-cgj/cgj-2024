@@ -477,7 +477,7 @@ MonoBehaviour:
   speed: 3
   mouseSensitivityX: 6
   mouseSensitivityY: 6
-  jumpForce: 50
+  jumpForce: 5
 --- !u!114 &9140008374318184803
 MonoBehaviour:
   m_ObjectHideFlags: 0
