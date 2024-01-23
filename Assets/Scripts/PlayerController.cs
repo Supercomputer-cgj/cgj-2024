@@ -2,19 +2,14 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMotor))]
-[RequireComponent(typeof(ConfigurableJoint))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 3f;
 
     [SerializeField] private float mouseSensitivityX = 10f;
     [SerializeField] private float mouseSensitivityY = 10f;
-    [SerializeField] private float thrusterForce = 1000f;
 
-    [Header("Joint Options")] [SerializeField]
-    private float jointSpring = 15;
-
-    [SerializeField] private float jointMaxForce = 30;
+    [SerializeField] private float jumpForce = 15f;
 
     private PlayerMotor motor;
     private ConfigurableJoint joint;
@@ -23,7 +18,6 @@ public class PlayerController : MonoBehaviour
     {
         motor = GetComponent<PlayerMotor>();
         joint = GetComponent<ConfigurableJoint>();
-        setJoinSettings(jointSpring);
     }
 
     private void Update()
@@ -52,22 +46,17 @@ public class PlayerController : MonoBehaviour
 
 
         //Gestion du thruster
-        Vector3 thrusterVelocity = Vector3.zero;
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
-            thrusterVelocity = Vector3.up * thrusterForce;
-            setJoinSettings(0f);
+            Jump(jumpForce);
         }
-        else
-        {
-            setJoinSettings(jointSpring);
-        }
-        motor.ApplyThruster(thrusterVelocity);
-        
+
+
     }
 
-    private void setJoinSettings(float _jointSpring)
+    private void Jump(float _jumpForce)
     {
-        joint.yDrive = new JointDrive {maximumForce = jointMaxForce, positionSpring = _jointSpring};
+        Vector3 jumpForce = new Vector3(0, _jumpForce, 0);
+        motor.Jump(jumpForce);
     }
 }
