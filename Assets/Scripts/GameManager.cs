@@ -13,15 +13,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private GameObject door1;
-
-    public void OpenOuPasx(GameObject door, int nbPlayerAc)
-    {
-        if (nbPlayerAc >= nbplayer())
-        {
-            gameObject.SetActive(false);
-        }
-    }
-    public static int nbplayer()
+    
+    public int nbplayer()
     {
         return players.Count;
     }
