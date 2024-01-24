@@ -41,6 +41,7 @@ public class Enemy : NetworkBehaviour
     {
         GameManager.UnRegisterEnemny(transform.name);
         gameObject.SetActive(false);
+        SetDefaults();
         Debug.Log(transform.name + " est mort");
     }
 

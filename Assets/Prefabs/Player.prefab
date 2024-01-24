@@ -527,6 +527,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 439
+  setup: {fileID: 9140008374318184803}
 --- !u!114 &-1951898031440373466
 MonoBehaviour:
   m_ObjectHideFlags: 0

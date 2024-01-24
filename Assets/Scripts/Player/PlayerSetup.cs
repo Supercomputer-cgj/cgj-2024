@@ -18,6 +18,12 @@ public class PlayerSetup : NetworkBehaviour
         return playerUiInvInstance;
     }
 
+    public GameObject getPlayerUiInstance()
+    {
+        return playerUiIntsance;
+    }
+    
+
     private Camera sceneCamera;
 
     private void Start()
