@@ -1,24 +1,29 @@
 using Mirror;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSetup : NetworkBehaviour
 {
     [SerializeField] private Behaviour[] componentsToDisable;
     [SerializeField] private string remoteLayerName = "RemotePlayer";
-
+    
     [SerializeField] private GameObject playerUiPrefab;
     private GameObject playerUiIntsance;
 
     [SerializeField] private GameObject playerUiInvPrefab;
     private GameObject playerUiInvInstance;
-
+    
+    [SerializeField] private GameObject playerLobbyPrefab;
+    
+    private GameObject playerLobbyInstance;
+    
+    private Camera sceneCamera;
+    
     public GameObject getPlayerUiInvInstance()
     {
         return playerUiInvInstance;
     }
-
-    private Camera sceneCamera;
-
+    
     private void Start()
     {
         //désactivation des scripts sur les autres joueurs
@@ -29,16 +34,9 @@ public class PlayerSetup : NetworkBehaviour
         }
         else
         {
-            //gestion de la main cam
-            sceneCamera = Camera.main;
-            if (sceneCamera != null)
+            //désactivation  de la camera principal
+            if(sceneCamera != null)
                 sceneCamera.gameObject.SetActive(false);
-            
-            //UiLocal player
-            playerUiIntsance = Instantiate(playerUiPrefab);
-            playerUiInvInstance = Instantiate(playerUiInvPrefab);
-
-            Cursor.lockState = CursorLockMode.Locked;
         }
         
         GetComponent<Player>().Setup();
@@ -68,11 +66,19 @@ public class PlayerSetup : NetworkBehaviour
         //ractive la camera principal 
         if (sceneCamera != null)
             sceneCamera.gameObject.SetActive(true);
+        
         //desinregistre le joueur
         GameManager.UnRegisterPlayer(transform.name);
 
         //supprime l'ui
         Destroy(playerUiIntsance);
         Destroy(playerUiInvInstance);
+        Destroy(playerLobbyInstance);
     }
+    
+   
+    
+
+    
+    
 }

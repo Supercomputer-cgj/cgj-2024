@@ -1638,6 +1638,8 @@ MonoBehaviour:
     type: 3}
   playerUiInvPrefab: {fileID: 9028054210031494678, guid: 690247e3677301d4b8c0448325db62d8,
     type: 3}
+  playerLobbyPrefab: {fileID: 3720594063438442432, guid: 3f42ebbaccdbdbd498ca505d596c782e,
+    type: 3}
 --- !u!114 &1488945667252248842
 MonoBehaviour:
   m_ObjectHideFlags: 0

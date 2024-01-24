@@ -6,7 +6,7 @@ using Mirror.Examples.AdditiveScenes;
 public class PlayerShoot : NetworkBehaviour
 {
     public PlayerWeapon weapon;
-    [SerializeField] private Camera cam;
+    [SerializeField] public Camera cam;
     [SerializeField] private LayerMask mask;
     private bool hasShot = false;
     private Vector3 direction;
