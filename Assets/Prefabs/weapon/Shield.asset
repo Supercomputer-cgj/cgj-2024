@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9630cfcbfa436418961b92835dbe69, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: 
+  model: {fileID: 3760912018876511857, guid: 7d41d010da092a94babb59eb8d7bbbc9, type: 3}
+  name: Shield
+  damage: 30
+  range: 20
+  timeAnimation: 2
+  descirpiton: un bon bouclier

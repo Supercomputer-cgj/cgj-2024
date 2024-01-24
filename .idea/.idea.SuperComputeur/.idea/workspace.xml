@@ -10,6 +10,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/CleaShoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/maelandroShoot.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -47,7 +51,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../build/SuperComputer.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../BUILD/SuperComputer.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\User\OneDrive\Bureau\Nouveau dossier" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -101,6 +105,8 @@
       <updated>1706000548629</updated>
       <workItem from="1706000548632" duration="570000" />
       <workItem from="1706001159577" duration="16431000" />
+      <workItem from="1706047129790" duration="3534000" />
+      <workItem from="1706050984186" duration="15217000" />
     </task>
     <servers />
   </component>
