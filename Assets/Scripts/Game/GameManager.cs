@@ -30,11 +30,13 @@ public class GameManager : MonoBehaviour
         players.Add(playerId, player);
         player.transform.name = playerId;
     }
+
     //desinregistre un joueur du dictionnaire
     public static void UnRegisterPlayer(string playerId)
     {
         players.Remove(playerId);
     }
+
     public static Player getPlayer(string playerid)
     {
         return players[playerid];

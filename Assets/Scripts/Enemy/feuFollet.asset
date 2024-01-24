@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: Feu follet
   enemyModel: {fileID: 19588385245968726, guid: 795c4501898b1e748b5688de747c5264,
+  enemyModel: {fileID: 19588385245968726, guid: 8ee08d04ad5df46fbb2e97260b63420b,
     type: 3}
   health: 100
   speed: 5

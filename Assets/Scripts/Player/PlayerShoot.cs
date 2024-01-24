@@ -1,11 +1,14 @@
+using System;
 using UnityEngine;
 using Mirror;
+using Mirror.Examples.AdditiveScenes;
 
 public class PlayerShoot : NetworkBehaviour
 {
     public PlayerWeapon weapon;
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask mask;
+    private bool hasShot = false;
     private Vector3 direction;
     private Vector3 depart;
     private void Start()
@@ -40,6 +43,8 @@ public class PlayerShoot : NetworkBehaviour
             //gere uniquement le tag player
             if (hit.collider.tag == "Player")
             {
+                depart = cam.transform.position;
+                direction = cam.transform.forward * weapon.range;
                 CmdPlayerShot(hit.collider.name);
             }
 
