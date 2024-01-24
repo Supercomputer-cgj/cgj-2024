@@ -44,6 +44,16 @@ public class PlayerSetup : NetworkBehaviour
             //UiLocal player
             playerUiIntsance = Instantiate(playerUiPrefab);
             playerUiInvInstance = Instantiate(playerUiInvPrefab);
+            
+            PlayerUI ui = playerUiIntsance.GetComponent<PlayerUI>();
+            if (ui == null)
+            {
+                Debug.LogError("P'as d'ui sur le player ?");
+            }
+            else
+            {
+                ui.SetPlayer(GetComponent<Player>());
+            }
         }
 
         GetComponent<Player>().Setup();

@@ -14,14 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: Feu follet
   enemyModel: {fileID: 19588385245968726, guid: 795c4501898b1e748b5688de747c5264,
-  enemyModel: {fileID: 19588385245968726, guid: 8ee08d04ad5df46fbb2e97260b63420b,
     type: 3}
   health: 100
   speed: 5
-  damage: 5
   wanderDistance: 10
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 192
-  weaponRange: 0.1
-  weaponDamage: 10
+  weaponRange: 0.5
+  weaponDamage: 0.2
+  attackDelay: 1
+  delaiTrigger: 5

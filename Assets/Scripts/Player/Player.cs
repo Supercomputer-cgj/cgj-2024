@@ -26,6 +26,11 @@ public class Player : NetworkBehaviour
     private GameObject playerUiInvInstance;
     private bool activInv = false;
 
+    public float getCurrentHealth()
+    {
+        return currentHealth / maxHealth;
+    }
+
 
     public void Setup()
     {
