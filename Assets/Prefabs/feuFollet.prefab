@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6137051926936915821}
   - component: {fileID: 5285974640615895072}
+  - component: {fileID: 3357541401492533112}
   - component: {fileID: 7314980090077095064}
-  - component: {fileID: 2718031861843719220}
   - component: {fileID: 1774349181081586626}
   - component: {fileID: 260584332112551554}
   - component: {fileID: 2551845222802913153}
   - component: {fileID: 6323473402198217786}
   m_Layer: 8
-  m_Name: FeuFollet
+  m_Name: feuFollet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,6 +60,22 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3357541401492533112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3618162660890227979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2214d6de291a46b09940e26c1e200eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  data: {fileID: 11400000, guid: 5ca88c9a807e1ab4cb9a024404245d80, type: 2}
 --- !u!114 &7314980090077095064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,22 +91,6 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
---- !u!114 &2718031861843719220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3618162660890227979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 602de13270fb4d2b82f93649c067cce1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  data: {fileID: 11400000, guid: 5ca88c9a807e1ab4cb9a024404245d80, type: 2}
 --- !u!114 &1774349181081586626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientStarted: 0
   sceneId: 0
-  _assetId: 2727576684
+  _assetId: 2529628413
   serverOnly: 0
   visible: 2
   hasSpawned: 0
