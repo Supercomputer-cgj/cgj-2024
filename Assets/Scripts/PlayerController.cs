@@ -90,7 +90,12 @@ public class PlayerController : MonoBehaviour
                 Jump(jumpForce);
             }
         }
-        else
+        else animator.Play(Idle);
+        
+        
+        //  Physics.Raycast(transform.position, Vector3.down, 0.8f)
+        //Gestion du jump
+        if (Input.GetButtonDown("Jump")) //Gestion du jump
         {
             motor.Move(new Vector3());
         }

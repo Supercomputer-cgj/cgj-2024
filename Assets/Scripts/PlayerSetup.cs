@@ -37,8 +37,6 @@ public class PlayerSetup : NetworkBehaviour
             //UiLocal player
             playerUiIntsance = Instantiate(playerUiPrefab);
             playerUiInvInstance = Instantiate(playerUiInvPrefab);
-
-            Cursor.lockState = CursorLockMode.Locked;
         }
         
         GetComponent<Player>().Setup();
