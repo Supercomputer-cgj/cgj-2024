@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Net;
 using UnityEngine;
 using Mirror;
 using Mirror.Examples.AdditiveScenes;
@@ -11,6 +13,9 @@ public class PlayerShoot : NetworkBehaviour
     private bool hasShot = false;
     private Vector3 direction;
     private Vector3 depart;
+    
+    private Animator animator;
+    
     private void Start()
     {
         if (cam == null)
@@ -18,14 +23,20 @@ public class PlayerShoot : NetworkBehaviour
             Debug.LogError("Pas de cam sur PlayerShoot, désactivation du script");
             this.enabled = false;
         }
+
+        animator = GetComponent<Animator>();
     }
 
     //action du tire
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !hasShot)
         {
             Shoot();
+        }
+        if (Input.GetButtonDown("Fire2") && !hasShot)
+        {
+            ShootMagic();
         }
     }
     
@@ -37,6 +48,8 @@ public class PlayerShoot : NetworkBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward,out hit,weapon.range,mask))
         {
+            hasShot = true;
+            StartCoroutine(CacAttack());
             //gere uniquement le tag player
             if (hit.collider.tag == "Player")
             {
@@ -46,10 +59,52 @@ public class PlayerShoot : NetworkBehaviour
             }
         }
     }
+    
+    private IEnumerator CacAttack()
+    {
+        animator.Play("atkCac"); //on joue lanimation d'attack
+        yield return new WaitForSeconds(weapon.timeAnimation); //on joue son temps d'attack
+        hasShot = false;
+        yield return new WaitForSeconds(weapon.timeAnimation+2); //temps de recharge de l'attaque, evite le spam
+    }
+    
+    
+    private void ShootMagic() //on lance les sorts magiques
+    {
+        //récupere le raycast et envoie au serveur son name 
+        GameObject spell = GameObject.FindWithTag("SpellMagic");
+
+        spell.SetActive(true);
+        StartCoroutine(magicAttack(spell)); //on lance le sort
+
+
+        /*RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward,out hit,weapon.range,mask))
+        {
+            hasShot = true;
+            StartCoroutine(CacAttack());
+            //gere uniquement le tag player
+            if (hit.collider.tag == "Player")
+            {
+                depart = cam.transform.position;
+                direction = cam.transform.forward * weapon.range;
+                CmdPlayerShot(hit.collider.name);
+            }
+        }*/
+    }
+    
+    
+    private IEnumerator magicAttack(GameObject spell)
+    {
+        animator.Play("atkMagic"); //on joue lanimation de lancée de sort
+        yield return new WaitForSeconds(10); //tps de "l'atk'
+        spell.SetActive(true);
+    }
+    
 
     private void OnDrawGizmos()
     {
-            Debug.DrawLine(depart, direction, Color.red);
+        Gizmos.DrawLine(depart, direction);
     }
 
     //gestion de this envoie au serveur

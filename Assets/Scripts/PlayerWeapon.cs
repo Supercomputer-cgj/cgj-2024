@@ -1,7 +1,16 @@
-[System.Serializable]
-public class PlayerWeapon
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
+public class PlayerWeapon : ScriptableObject
 {
-    public string name = "AK-47";
-    public float damage = 24.7f;
-    public float range = 85f;
+
+    public GameObject model;
+    
+    public string name;
+    public float damage;
+    public float range;
+    public float timeAnimation;
+    
+    public string descirpiton;
+    
 }

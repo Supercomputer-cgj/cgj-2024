@@ -85,6 +85,19 @@ public class Player : NetworkBehaviour
         if (currentHealth <= 0)
             Die();
     }
+    
+    // Le serveur vers les clients
+    [ClientRpc]
+    public void RpcTakeHeal(float Heal)
+    {
+        if (currentHealth >= maxHealth)
+            return;
+
+        currentHealth += Heal;
+        Debug.Log(transform.name + " a gagné " + Heal + " Il a maintenat " + currentHealth + "pv");
+    }
+    
+    
 
     private void Die()
     {
